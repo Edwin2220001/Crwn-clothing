@@ -10,7 +10,12 @@ import { signOutUser } from "./utils/firebase/firebase.utils";
 import CartIcon from "./components/cart-icon/cart-icon.component";
 import CartDropdown from "./components/cart-dropdown/cart-dropdown.component";
 
-import "./NavBar.styles.scss";
+import {
+    NavigationContainer,
+    LogoContainer,
+    NavLinks,
+    NavLink,
+} from "./NavBar.styles";
 
 
 const NavBar= () => {
@@ -23,30 +28,24 @@ const NavBar= () => {
     };
 
     return (
-        <div className="navigation">
-            <Link className="logo-container" to="/">
-                <CrwnLogo className="logo"/>
-            </Link>
+        <NavigationContainer>
+            <LogoContainer to='/'> <CrwnLogo /> </LogoContainer>
             
-            <div className="nav-links-container">
-                <Link className="nav-link" to="/shop">
-                    SHOP
-                </Link>
+            <NavLinks>
+                <NavLink to='/shop'>SHOP</NavLink>
 
                 {currentUser ? (
-                    <span className="nav-link" onClick={signOutHandler} to="">
+                    <NavLink as='span' onClick={signOutHandler}>
                         SIGN OUT
-                    </span>
+                    </NavLink>
                 ) : (
-                    <Link className="nav-link" to="/auth">
-                        SIGN IN
-                    </Link>
+                    <NavLink to='/auth'>SIGN IN</NavLink>
                 )}
 
                 <CartIcon />
-            </div>
+            </NavLinks>
             {isCartOpen && <CartDropdown />}
-        </div>
+        </NavigationContainer>
     );
 };
 

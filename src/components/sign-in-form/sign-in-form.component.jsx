@@ -81,7 +81,7 @@ const SignInForm= () => {
                 />
                 <div className='buttons-container'>
                     <Button type='submit'>Sign In</Button>
-                    <Button type='button' buttonType='google' onClick={signInWithGoogle}>
+                    <Button type='button' buttonType= "google" onClick={signInWithGoogle}>
                         Google sign in
                     </Button>
                 </div>
@@ -91,3 +91,12 @@ const SignInForm= () => {
 }
 
 export default SignInForm;
+
+
+
+
+// import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+
+{/* <Button type='button' buttonType= {BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
+    Google sign in
+</Button> */}
