@@ -40,12 +40,10 @@ googleProvider.setCustomParameters({
 });
 
 
-const auth= getAuth();
-onAuthStateChanged(auth, user => {console.log( `You are logged in as`, user); });
+export const auth= getAuth();
+export const onAuthStateChangedListener= (user) => onAuthStateChanged(auth, user);
 
 export const signInWithGooglePopup= () => signInWithPopup(auth, googleProvider);
-
-export default auth;
 
 export const db= getFirestore();
 
@@ -68,7 +66,7 @@ export const getCategoriesAndDocuments= async() => {
 
     const querySnapshot= await getDocs(q);
 
-    const categoryMap= querySnapshot.docs.reduce((acc, docSnapshot) => {         //querySnapshot.docs= array data
+    const categoryMap= querySnapshot.docs.reduce((acc, docSnapshot) => {     //querySnapshot.docs= array data
         const { title, items }= docSnapshot.data();
         acc[title.toLowerCase()]= items;
         return acc;
@@ -76,7 +74,6 @@ export const getCategoriesAndDocuments= async() => {
 
     return categoryMap;
 }
-
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInfo= {}) => {
     if(!userAuth) return;
@@ -102,7 +99,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInfo= {}) =
 
     return userDocRef;
 };
-
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;

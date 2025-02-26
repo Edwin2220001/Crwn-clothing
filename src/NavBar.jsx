@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 
 import { ReactComponent as CrwnLogo } from "./assets/crown.svg";
 import { UserContext } from "./contexts/user.context";
@@ -35,7 +34,7 @@ const NavBar= () => {
                 <NavLink to='/shop'>SHOP</NavLink>
 
                 {currentUser ? (
-                    <NavLink as='span' onClick={signOutHandler}>
+                    <NavLink as='span' onClick={signOutHandler} to=''>
                         SIGN OUT
                     </NavLink>
                 ) : (
@@ -45,6 +44,7 @@ const NavBar= () => {
                 <CartIcon />
             </NavLinks>
             {isCartOpen && <CartDropdown />}
+            
         </NavigationContainer>
     );
 };
