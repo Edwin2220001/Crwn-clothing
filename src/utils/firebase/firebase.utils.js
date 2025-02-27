@@ -40,7 +40,7 @@ googleProvider.setCustomParameters({
 });
 
 
-export const auth= getAuth();
+export const auth= getAuth(firebaseApp);
 export const onAuthStateChangedListener= (user) => onAuthStateChanged(auth, user);
 
 export const signInWithGooglePopup= () => signInWithPopup(auth, googleProvider);
